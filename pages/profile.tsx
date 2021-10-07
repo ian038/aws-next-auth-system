@@ -4,6 +4,9 @@ import { CognitoUserInterface } from '@aws-amplify/ui-components'
 import '../amplifyConfigure'
 import SignIn from '../components/SignIn'
 import SignUp from '../components/SignUp'
+import ForgotPassword from '../components/ForgotPassword'
+import ResetPassword from '../components/ResetPassword'
+import ConfirmSignUp from '../components/ConfirmSignUp'
 
 type formState = {
     email: String,
@@ -51,6 +54,11 @@ const Profile: React.FC<{}> = () => {
                             )
                         }
                         {
+                            uiState === 'confirmSignUp' && (
+                                <ConfirmSignUp onChange={onChange} setUiState={setUiState} />
+                            )
+                        }
+                        {
                             uiState === 'signIn' && (
                                 <SignIn onChange={onChange} setUiState={setUiState} />
                             )
@@ -65,6 +73,16 @@ const Profile: React.FC<{}> = () => {
                                         Sign Out
                                     </button>
                                 </div>
+                            )
+                        }
+                        {
+                            uiState === 'forgotPassword' && (
+                                <ForgotPassword onChange={onChange} setUiState={setUiState} />
+                            )
+                        }
+                        {
+                            uiState === 'resetPassword' && (
+                                <ResetPassword onChange={onChange} setUiState={setUiState} />
                             )
                         }
                     </div>
