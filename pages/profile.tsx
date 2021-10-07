@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Auth } from 'aws-amplify'
-import { CognitoUser } from '@aws-amplify/auth';
-import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth/lib/types';
+import { CognitoUserInterface } from '@aws-amplify/ui-components'
 import '../amplifyConfigure'
+import SignIn from '../components/SignIn'
 
 type formState = {
     email: String,
@@ -17,18 +17,25 @@ const initialState: formState = {
 }
 
 const Profile: React.FC<{}> = () => {
-    const [uiState, setUiState] = useState<String | null>(null)
+    const [uiState, setUiState] = useState<String | null>('signIn')
     const [formState, setFormState] = useState<formState>(initialState)
+    const [user, setUser] = useState<CognitoUserInterface | null>(null)
 
     useEffect(() => {
         checkUser()
         async function checkUser() {
-            const user: CognitoUser = await Auth.currentAuthenticatedUser()
-            console.log({ user })
+            try {
+                const user: CognitoUserInterface = await Auth.currentAuthenticatedUser()
+                setUser(user)
+                setUiState('signedIn')
+            } catch(error) {
+                setUiState('signIn')
+                setUser(null)
+            }
         }
     }, [])
 
-    const onChange = e => {
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormState({ ...formState, [e.target.name]: e.target.value })
     }
 
@@ -36,14 +43,16 @@ const Profile: React.FC<{}> = () => {
         <div>
             {
                 uiState === 'signIn' && (
+                    <SignIn onChange={onChange} setUiState={setUiState} />
+                )
+            }
+            {
+                uiState === 'signedIn' && (
                     <div>
-                        <button onClick={() => Auth.federatedSignIn({ provider: CognitoHostedUIIdentityProvider.Google })}>
-                            Sign In with Google
-                        </button>
-                        <button onClick={() => Auth.federatedSignIn({ provider: CognitoHostedUIIdentityProvider.Facebook })}>
-                            Sign In with Facebook
-                        </button>
-                        <button onClick={() => Auth.signOut()}>
+                        <p className='text-xl'>Welcome {user.username}</p>
+                        <button 
+                        className='text-white w-full mt-10 bg-red-600 p-3 rounded' 
+                        onClick={() => { Auth.signOut(); setUiState('signIn'); setUser(null) }}>
                             Sign Out
                         </button>
                     </div>

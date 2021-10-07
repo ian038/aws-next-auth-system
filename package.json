@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-amplify/ui-components": "^1.8.2",
     "@types/node": "^16.9.6",
     "@types/react": "^17.0.24",
     "autoprefixer": "^10.3.5",
