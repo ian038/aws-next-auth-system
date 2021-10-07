@@ -1,11 +1,10 @@
 import React, { Dispatch, SetStateAction } from 'react'
-import { Auth } from 'aws-amplify'
 import Input from './Input'
 
 type props = {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
     setUiState: Dispatch<SetStateAction<String | null>>
-    forgotPassword: () => void
+    forgotPassword: () => Promise<void>
 }
 
 const ForgotPassword: React.FC<props> = ({ onChange, setUiState, forgotPassword }) => {

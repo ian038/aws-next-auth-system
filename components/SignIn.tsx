@@ -1,12 +1,11 @@
 import React, { Dispatch, SetStateAction } from 'react'
-import { Auth } from 'aws-amplify'
 import SocialSignIn from "./SocialSignIn";
 import Input from './Input'
 
 type props = {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
     setUiState: Dispatch<SetStateAction<String | null>>
-    signIn: () => void
+    signIn: () => Promise<void>
 }
 
 const SignIn: React.FC<props> = ({ onChange, setUiState, signIn }) => {
@@ -16,14 +15,14 @@ const SignIn: React.FC<props> = ({ onChange, setUiState, signIn }) => {
         <div>
             <p className='text-3xl font-black'>Sign In</p>
             <div className='mt-10'>
-                <label className='text-sm'>Email</label>
-                <Input onChange={onChange} name='email' type='email' />
+                <label className='text-sm'>Username</label>
+                <Input onChange={onChange} name='username' type='text' />
             </div>
             <div className='mt-4'>
                 <label>Password</label>
                 <span
                 onClick={() => setUiState('forgotPassword')}
-                className="text-sm ml-8 sm:ml-44 text-blue-500"
+                className="cursor-pointer text-sm ml-8 sm:ml-44 text-blue-500"
                 >Forgot your password?</span>
                 <Input onChange={onChange} name='email' type='password' />
             </div>
