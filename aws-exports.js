@@ -16,7 +16,7 @@ const awsmobile = {
             "profile",
             "aws.cognito.signin.user.admin"
         ],
-        "redirectSignIn": "https://aws-next-auth-system.vercel.app/",
+        "redirectSignIn": "https://aws-next-auth-system.vercel.app/,https://aws-next-auth-system.vercel.app/",
         "redirectSignOut": "https://aws-next-auth-system.vercel.app/",
         "responseType": "code"
     },
