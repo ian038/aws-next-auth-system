@@ -60,5 +60,5 @@
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
     "dependsOn": [],
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://aws-next-auth-system.vercel.app/\",\"https://aws-next-auth-system.vercel.app/\"],\"LogoutURLs\":[\"https://aws-next-auth-system.vercel.app/\"]}"
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\",\"https://aws-next-auth-system.vercel.app/\"],\"LogoutURLs\":[\"https://aws-next-auth-system.vercel.app/\",\"http://localhost:3000/\"]}"
 }
