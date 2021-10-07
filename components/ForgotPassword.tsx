@@ -12,8 +12,8 @@ const ForgotPassword: React.FC<props> = ({ onChange, setUiState, forgotPassword 
         <div>
             <p className='text-3xl font-black'>Forgot Password?</p>
             <div className='mt-10'>
-                <label className='text-sm'>Email</label>
-                <Input onChange={onChange} name='email' type='email' />
+                <label className='text-sm'>Username</label>
+                <Input onChange={onChange} name='username' type='text' />
             </div>
             <button onClick={forgotPassword} className='text-white w-full mt-6 bg-blue-600 p-3 rounded'>
                 Reset Password

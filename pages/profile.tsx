@@ -74,7 +74,8 @@ const Profile: React.FC<{}> = () => {
 
     const forgotPassword = async () => {
         try {
-
+            await Auth.forgotPassword(username)
+            setUiState('resetPassword')
         } catch(error) {
             console.log('Forgot password', error)
         }
@@ -82,7 +83,8 @@ const Profile: React.FC<{}> = () => {
 
     const resetPassword = async () => {
         try {
-
+            await Auth.forgotPasswordSubmit(username, authCode, password)
+            setUiState('signIn')
         } catch(error) {
             console.log('Reset password', error)
         }
