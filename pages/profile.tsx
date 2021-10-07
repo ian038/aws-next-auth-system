@@ -3,6 +3,7 @@ import { Auth } from 'aws-amplify'
 import { CognitoUserInterface } from '@aws-amplify/ui-components'
 import '../amplifyConfigure'
 import SignIn from '../components/SignIn'
+import SignUp from '../components/SignUp'
 
 type formState = {
     email: String,
@@ -44,6 +45,11 @@ const Profile: React.FC<{}> = () => {
             <div className='flex flex-col items-center'>
                 <div className='max-w-full sm:w-540 mt-14'>
                     <div className='bg-white py-14 px-16 shadow-form rounded'>
+                        {
+                            uiState === 'signUp' && (
+                                <SignUp onChange={onChange} setUiState={setUiState} />
+                            )
+                        }
                         {
                             uiState === 'signIn' && (
                                 <SignIn onChange={onChange} setUiState={setUiState} />

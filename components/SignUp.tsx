@@ -6,40 +6,34 @@ import Input from './Input'
 type props = {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
     setUiState: Dispatch<SetStateAction<String | null>>
-    signIn: () => void
+    signUp: () => void
 }
 
-const SignIn: React.FC<props> = ({ onChange, setUiState, signIn }) => {
-
-
+const SignUp: React.FC<props> = ({ onChange, setUiState, signUp }) => {
     return (
         <div>
-            <p className='text-3xl font-black'>Sign In</p>
+            <p className='text-3xl font-black'>Sign Up</p>
             <div className='mt-10'>
                 <label className='text-sm'>Email</label>
                 <Input onChange={onChange} name='email' type='email' />
             </div>
             <div className='mt-4'>
                 <label>Password</label>
-                <span
-                onClick={() => setUiState('forgotPassword')}
-                className="text-sm ml-8 sm:ml-44 text-blue-500"
-                >Forgot your password?</span>
                 <Input onChange={onChange} name='email' type='password' />
             </div>
-            <button onClick={signIn} className='text-white w-full mt-6 bg-blue-600 p-3 rounded'>
-                Sign In
+            <button onClick={signUp} className='text-white w-full mt-6 bg-blue-600 p-3 rounded'>
+                Sign Up
             </button>
             <SocialSignIn />
             <p className="mt-12 text-sm font-light">
-                Don&apos;t have an account?
+                Already have an account?
                 <span
-                onClick={() => setUiState('signUp')}
+                onClick={() => setUiState('signIn')}
                 role="button"
-                className="cursor-pointer text-blue-600"> Sign Up</span>
+                className="cursor-pointer text-blue-600"> Sign In</span>
             </p>
         </div>
     )
 }
 
-export default SignIn
+export default SignUp
